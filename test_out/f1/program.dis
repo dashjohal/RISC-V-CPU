@@ -1,0 +1,49 @@
+
+a.out.reloc:     file format elf32-littleriscv
+architecture: riscv:rv32, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0xbfc00000
+
+
+Disassembly of section .text:
+
+bfc00000 <main>:
+bfc00000:	00000513          	li	a0,0
+bfc00004:	00150513          	addi	a0,a0,1
+bfc00008:	068000ef          	jal	ra,bfc00070 <delay>
+bfc0000c:	00151513          	slli	a0,a0,0x1
+bfc00010:	00150513          	addi	a0,a0,1
+bfc00014:	05c000ef          	jal	ra,bfc00070 <delay>
+bfc00018:	00151513          	slli	a0,a0,0x1
+bfc0001c:	00150513          	addi	a0,a0,1
+bfc00020:	050000ef          	jal	ra,bfc00070 <delay>
+bfc00024:	00151513          	slli	a0,a0,0x1
+bfc00028:	00150513          	addi	a0,a0,1
+bfc0002c:	044000ef          	jal	ra,bfc00070 <delay>
+bfc00030:	00151513          	slli	a0,a0,0x1
+bfc00034:	00150513          	addi	a0,a0,1
+bfc00038:	038000ef          	jal	ra,bfc00070 <delay>
+bfc0003c:	00151513          	slli	a0,a0,0x1
+bfc00040:	00150513          	addi	a0,a0,1
+bfc00044:	02c000ef          	jal	ra,bfc00070 <delay>
+bfc00048:	00151513          	slli	a0,a0,0x1
+bfc0004c:	00150513          	addi	a0,a0,1
+bfc00050:	020000ef          	jal	ra,bfc00070 <delay>
+bfc00054:	00151513          	slli	a0,a0,0x1
+bfc00058:	00150513          	addi	a0,a0,1
+bfc0005c:	014000ef          	jal	ra,bfc00070 <delay>
+bfc00060:	010000ef          	jal	ra,bfc00070 <delay>
+bfc00064:	00c000ef          	jal	ra,bfc00070 <delay>
+bfc00068:	00000513          	li	a0,0
+bfc0006c:	00051a63          	bnez	a0,bfc00080 <finish>
+
+bfc00070 <delay>:
+bfc00070:	02000593          	li	a1,32
+
+bfc00074 <_loop1>:
+bfc00074:	fff58593          	addi	a1,a1,-1
+bfc00078:	fe059ee3          	bnez	a1,bfc00074 <_loop1>
+bfc0007c:	00008067          	ret
+
+bfc00080 <finish>:
+bfc00080:	00051063          	bnez	a0,bfc00080 <finish>
