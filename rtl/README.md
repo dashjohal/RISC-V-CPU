@@ -5,7 +5,7 @@
 | alu.sv                |  |  |x |
 | Aludecoder.sv         |  |x |  |
 | alutop.sv             |  |  |x |
-| cache.sv              |p | p |  |
+| cache.sv              |p | x |  |
 | cu.sv                 |  |x |  |
 | datamemory.sv         |x |  |  |
 | hazardunit.sv         |  |  |  |x
