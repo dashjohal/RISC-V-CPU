@@ -7,18 +7,12 @@ module cache (
     output logic        hit
 );
 
-    // Address breakdown
-    // [31:5] = tag (27 bits)
-    // [4:2]  = SET (3 bits)
-    // [1:0]  = byte offset (2 bits, not directly used here since we store words)
-    localparam TAG_BITS = 26;
-    localparam SET_BITS = 6;
-    //localparam OFFSET_BITS = 2;
+    localparam OFFSET_BITS = 2;
+    localparam SET_BITS    = 6;
+    localparam TAG_BITS    = 32 - SET_BITS - OFFSET_BITS; // 24
 
-    // Extract fields
-    wire [TAG_BITS-1:0]    tag_in  = addr[31:SET_BITS];
-    wire [SET_BITS-1:0]    SET_in  = addr[SET_BITS-1:0];
-    // byte offset: addr[1:0], not needed for word-aligned operations in this example
+    wire [TAG_BITS-1:0]    tag_in = addr[31 : SET_BITS + OFFSET_BITS];   // [31:8]
+    wire [SET_BITS-1:0]    set_in = addr[SET_BITS + OFFSET_BITS -1 : OFFSET_BITS]; // [7:2]
 
     // Cache storage arrays
     // 8 entries (2^3), each with a tag, a valid bit, and a 32-bit data word.
